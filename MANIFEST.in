@@ -1,0 +1,13 @@
+include *.in
+include *.ini
+include *.rst
+include *.txt
+include .gitignore
+include LICENSE
+recursive-include pyrobot *
+prune pyrobot.egg-info
+prune config
+
+
+global-exclude __pycache__ *.py[cod]
+global-exclude *.so *.dylib *.log

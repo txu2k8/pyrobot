@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.9.0 on win32)" generated="20201203 15:48:18.393" rpa="false">
+<suite id="s1" name="Cases" source="C:\workspace\pyrobot\cases">
+<suite id="s1-s1" name="Login" source="C:\workspace\pyrobot\cases\login">
+<suite id="s1-s1-s1" name="Login 1" source="C:\workspace\pyrobot\cases\login\login_1.robot">
+<kw name="Suite Setup" library="F" type="setup">
+<status status="PASS" starttime="20201203 15:48:18.476" endtime="20201203 15:48:18.477"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="添加订单 - 00001">
+<kw name="Setup" library="c00001" type="setup">
+<status status="PASS" starttime="20201203 15:48:18.478" endtime="20201203 15:48:18.479"></status>
+</kw>
+<kw name="Teststeps" library="c00001">
+<status status="PASS" starttime="20201203 15:48:18.479" endtime="20201203 15:48:18.480"></status>
+</kw>
+<kw name="Teardown" library="c00001" type="teardown">
+<status status="PASS" starttime="20201203 15:48:18.481" endtime="20201203 15:48:18.481"></status>
+</kw>
+<tags>
+<tag>fun_order</tag>
+<tag>now</tag>
+<tag>smoke_test</tag>
+<tag>本次不测</tag>
+</tags>
+<status status="PASS" starttime="20201203 15:48:18.477" endtime="20201203 15:48:18.482" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t2" name="添加订单 - 00002">
+<kw name="Teststeps" library="c00002">
+<status status="PASS" starttime="20201203 15:48:18.488" endtime="20201203 15:48:18.488"></status>
+</kw>
+<kw name="Teardown" library="c00002" type="teardown">
+<status status="PASS" starttime="20201203 15:48:18.489" endtime="20201203 15:48:18.489"></status>
+</kw>
+<tags>
+<tag>fun_order</tag>
+<tag>smoke_test</tag>
+<tag>优先级7</tag>
+</tags>
+<status status="PASS" starttime="20201203 15:48:18.485" endtime="20201203 15:48:18.490" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t3" name="登录 - 000031">
+<kw name="Teststeps" library="c00003x">
+<arguments>
+<arg>${0}</arg>
+</arguments>
+<msg timestamp="20201203 15:48:18.496" level="INFO">user001 888888</msg>
+<status status="PASS" starttime="20201203 15:48:18.495" endtime="20201203 15:48:18.499"></status>
+</kw>
+<kw name="Teardown" library="c00003x" type="teardown">
+<status status="PASS" starttime="20201203 15:48:18.500" endtime="20201203 15:48:18.501"></status>
+</kw>
+<tags>
+<tag>fun_order</tag>
+<tag>smoke_test</tag>
+<tag>优先级7</tag>
+</tags>
+<status status="PASS" starttime="20201203 15:48:18.493" endtime="20201203 15:48:18.501" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t4" name="登录 - 000032">
+<kw name="Teststeps" library="c00003x">
+<arguments>
+<arg>${1}</arg>
+</arguments>
+<msg timestamp="20201203 15:48:18.505" level="INFO">user002 8</msg>
+<status status="PASS" starttime="20201203 15:48:18.505" endtime="20201203 15:48:18.505"></status>
+</kw>
+<kw name="Teardown" library="c00003x" type="teardown">
+<status status="PASS" starttime="20201203 15:48:18.506" endtime="20201203 15:48:18.506"></status>
+</kw>
+<tags>
+<tag>fun_order</tag>
+<tag>smoke_test</tag>
+<tag>优先级7</tag>
+</tags>
+<status status="PASS" starttime="20201203 15:48:18.503" endtime="20201203 15:48:18.507" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t5" name="登录 - 000033">
+<kw name="Teststeps" library="c00003x">
+<arguments>
+<arg>${2}</arg>
+</arguments>
+<msg timestamp="20201203 15:48:18.511" level="INFO">user002</msg>
+<status status="PASS" starttime="20201203 15:48:18.511" endtime="20201203 15:48:18.511"></status>
+</kw>
+<kw name="Teardown" library="c00003x" type="teardown">
+<status status="PASS" starttime="20201203 15:48:18.512" endtime="20201203 15:48:18.512"></status>
+</kw>
+<tags>
+<tag>fun_order</tag>
+<tag>smoke_test</tag>
+<tag>优先级7</tag>
+</tags>
+<status status="PASS" starttime="20201203 15:48:18.510" endtime="20201203 15:48:18.513" critical="yes"></status>
+</test>
+<kw name="Suite Teardown" library="F" type="teardown">
+<status status="PASS" starttime="20201203 15:48:18.516" endtime="20201203 15:48:18.516"></status>
+</kw>
+<status status="PASS" starttime="20201203 15:48:18.452" endtime="20201203 15:48:18.516"></status>
+</suite>
+<status status="PASS" starttime="20201203 15:48:18.446" endtime="20201203 15:48:18.523"></status>
+</suite>
+<status status="PASS" starttime="20201203 15:48:18.397" endtime="20201203 15:48:18.527"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0">Critical Tests</stat>
+<stat pass="5" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="5" fail="0">fun_order</stat>
+<stat pass="1" fail="0">now</stat>
+<stat pass="5" fail="0">smoke_test</stat>
+<stat pass="4" fail="0">优先级7</stat>
+<stat pass="1" fail="0">本次不测</stat>
+</tag>
+<suite>
+<stat pass="5" fail="0" id="s1" name="Cases">Cases</stat>
+<stat pass="5" fail="0" id="s1-s1" name="Login">Cases.Login</stat>
+<stat pass="5" fail="0" id="s1-s1-s1" name="Login 1">Cases.Login.Login 1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
