@@ -1,0 +1,6 @@
+coloredlogs==14.0
+humanfriendly==9.0
+prettytable==2.0.0
+pyreadline==2.1
+robotframework==3.2.2
+wcwidth==0.2.5

@@ -11,8 +11,11 @@ import ast
 import os
 import sys
 import shutil
+import unittest
 
-CASE_DIR = r'cases'
+# CASE_DIR = r'cases'
+REPORT_DIR = r"C:\workspace\pyrobot\report"
+CASE_DIR = r"C:\workspace\pyrobot\cases\ha"
 CASE_GEN_DIR = r'cases_gen'
 LOG_LEVEL = 2
 
@@ -513,11 +516,82 @@ def run_rf():
     else:
         cmd = f'{python_executable} -m robot.run {arg_str}  {CASE_DIR}'
 
-    print('运行的命令是：' + cmd)
+    # cmd += f" -r {REPORT_DIR}\\report -l {REPORT_DIR}\\log -o {REPORT_DIR}\\output"
+    print(cmd)
     ret = os.system(cmd)
 
     return ret
 
 
+class Py2Robot(object):
+    """Convert the python file to robot test"""
+
+    def __init__(self, py_file, tc_class):
+        self.py_file = py_file
+        self.tc_class = tc_class
+        self.module_name = os.path.basename(self.py_file)[:-3]
+        self.settings_txt = ""
+        self.testcases_txt = ""
+
+    @property
+    def suite(self):
+        suite = unittest.TestSuite()
+        loader = unittest.TestLoader()
+        suite.addTests(loader.loadTestsFromTestCase(self.tc_class))
+        return suite
+
+    def handle_suite_settings(self):
+        """
+        handle the suite setting text
+        :return:
+        """
+        self.settings_txt = '''*** Settings ***\n\n'''
+        self.settings_txt += f'Library  {self.module_name}.py   WITH NAME  {self.module_name}\n\n'
+
+        # Suite Setup/Teardown from __init__.py
+        # settings_txt += f'Suite Setup    {module_name}.setUpClass\n\n'
+        # settings_txt += f'Suite Teardown    {module_name}.tearDownClass\n\n'
+
+        # Test Setup/Teardown from setUp/tearDown Class
+        self.settings_txt += f'Test Setup    {self.module_name}.{self.tc_class.__name__}.setUpClass\n\n'
+        self.settings_txt += f'Test Teardown    {self.module_name}.{self.tc_class.__name__}.tearDownClass\n\n'
+        # Force Tags
+        force_tags = '   '.join(self.tc_class.force_tags)
+        self.settings_txt += f'Force Tags     {force_tags}  \n\n'
+        # Default Tags
+        default_tags = '   '.join(self.tc_class.default_tags)
+        self.settings_txt += f'Default Tags     {default_tags}\n\n'
+
+    def handle_test_cases(self):
+        """
+        handle test cases text
+        :return:
+        """
+        self.testcases_txt = '\n\n*** Test Cases ***'
+
+        for test in self.suite._tests:
+            self.settings_txt += f'Library  {self.module_name}.{self.tc_class.__name__}   WITH NAME  {self.tc_class.__name__}\n\n'
+            self.testcases_txt += f'\n\n{test.id()}\n'
+            tags = '   '.join(test.tags)
+            self.testcases_txt += f'  [Tags]      {tags}\n'
+            self.testcases_txt += f'  [Setup]     {self.tc_class.__name__}.setUp\n'
+            self.testcases_txt += f'  [Teardown]  {self.tc_class.__name__}.tearDown\n'
+            self.testcases_txt += f'\n  {self.tc_class.__name__}.{test.id().split(".")[-1]}\n'
+
+    def handle(self):
+        self.handle_suite_settings()
+        # print(self.settings_txt)
+        self.handle_test_cases()
+        # print(self.testcases_txt)
+
+        robot_file = "{0}_{1}.robot".format(self.py_file[:-3], self.tc_class.__name__)
+        with open(robot_file, 'w', encoding='utf8') as rf:
+            rf.write(self.settings_txt)
+            rf.write(self.testcases_txt)
+
+
 if __name__ == '__main__':
-    pass
+    from cases.ha.test_ha import HA
+    pr = Py2Robot(r"C:\workspace\pyrobot\cases\ha\test_ha.py", HA)
+    pr.handle()
+    run_rf()
