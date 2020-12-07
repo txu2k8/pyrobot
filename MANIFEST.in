@@ -5,8 +5,9 @@ include *.txt
 include .gitignore
 include LICENSE
 recursive-include pyrobot *
+recursive-include report *
+recursive-include cases *
 prune pyrobot.egg-info
-prune config
 
 
 global-exclude __pycache__ *.py[cod]

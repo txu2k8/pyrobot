@@ -50,7 +50,7 @@ def _find_packages():
 
 
 setup(
-    name='pyrobot',
+    name='pyrobotf',
     python_requires='>=3.4.0',
     version='1.0.0',
     description="A test framework based on robot.",
